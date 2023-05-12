@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "775076153875",
+    "firebase_url": "https://mihavapp-7e3b6-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "mihavapp-7e3b6",
+    "storage_bucket": "mihavapp-7e3b6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:775076153875:android:11e9e60a0f09726b494de6",
+        "android_client_info": {
+          "package_name": "com.mamatakip"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "775076153875-i7s6cb2tmrf3flvea21qlhunqol5iu07.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA1pZsqHpwFwlLi9hisBrJz-LJ9MYWMaTs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "775076153875-i7s6cb2tmrf3flvea21qlhunqol5iu07.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
