@@ -58,7 +58,7 @@ export const UnitsScreen = () => {
   };
 
   useEffect(() => {
-    const dbRef = database().ref('unite');
+    const dbRef = database().ref('unite').orderByKey().limitToLast(1);
     dbRef.on('value', snapshot => {
       const data = snapshot.val();
       const lastUnit = data[Object.keys(data).pop()];
