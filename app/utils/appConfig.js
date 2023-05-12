@@ -17,7 +17,7 @@ export const appConfig = {
     'Bağış gönderme işlemi nasıl yapılır? Aşağıda verilen Banka Bilgileri kullanılarak bağış yapılmaktadır. Verilen IBAN numarasına istediğiniz tutarda bağış yapabilirsiniz.',
   bankAccountInfo: 'VakıfBank TRIBAN: \n\nTR00 .................',
   howCanIUseUnits:
-    'Aşağıda her ünitede ki mama ve su seviyelerini görebilirsiniz. Ev sembolüne tıklayarak detaylı bilgiye ulaşabilirsiniz.',
+    'Aşağıda her ünitede ki mama ve su seviyelerini görebilirsiniz.',
   linkForBuyFood:
     'https://www.trendyol.com/koleksiyonlar/mamasatinal-k-60a08c66-def1-4442-8589-dce232c44d6e',
 };

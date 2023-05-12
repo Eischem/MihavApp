@@ -1,65 +1,72 @@
-import React from 'react';
-import {View, Text, ScrollView} from 'react-native';
+import React, {useEffect, useState} from 'react';
+import database from '@react-native-firebase/database';
+import {View, Text, ScrollView, ActivityIndicator} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import {TopBar, Container, Header, Icon} from '../../components';
 import {appConfig} from '../../utils/appConfig';
 import styles from './styles';
-import {colors} from '../../utils/theme';
+import {colors, sizes} from '../../utils/theme';
 
 const colorPalette = [colors.indigo, colors.darkOrange, colors.blue];
 
-const unitTitles = ['Ünite Adı', 'Mama Oranı', 'Su Oranı'];
+const unitTitles = ['Yem Miktarı', 'Su Miktarı', 'Nem', 'Sıcaklık'];
 
 const unitInfos = [
-  {id: 0, location: 'Kültür', food: '%20', water: '%50'},
-  {id: 1, location: 'Bosna', food: '%80', water: '%45'},
-  {id: 2, location: 'Kampüs', food: '%34', water: '%72'},
+  {id: 0, location: 'Kültür'},
+  {id: 1, location: 'Bosna'},
+  {id: 2, location: 'Kampüs'},
 ];
 
-const UnitContainer = ({itemsText, key}) => {
+const UnitContainer = ({unit, index}) => {
   return (
-    <View style={styles.unitContainer}>
-      {itemsText.map((item, index) => (
-        <Text style={[styles.unitText, {color: colorPalette[index]}]}>
-          {item}
-        </Text>
-      ))}
-    </View>
-  );
-};
-
-const UnitInfo = ({icon, item, key}) => {
-  return (
-    <View style={styles.unitContainer}>
-      {icon && <Icon icon={icon} />}
-      <Text style={[styles.unitText, {color: colorPalette[0]}]}>
-        {item.location}
-      </Text>
+    <View style={{width: 300, padding: sizes.base}}>
       <Text
-        style={[
-          styles.unitText,
-          styles.valueContainer,
-          {backgroundColor: colorPalette[1]},
-        ]}>
-        {item.food}
+        style={{
+          color: 'black',
+          fontWeight: 'bold',
+          fontSize: 20,
+          marginBottom: sizes.base,
+        }}>
+        {unitInfos[index].location}
       </Text>
-      <Text
-        style={[
-          styles.unitText,
-          styles.valueContainer,
-          {backgroundColor: colorPalette[2]},
-        ]}>
-        {item.water}
-      </Text>
+      <View style={{flexDirection: 'row'}}>
+        <Text>{unitTitles[0]} : </Text>
+        <Text style={{color: 'black'}}>{unit.yemmesafe}</Text>
+      </View>
+      <View style={{flexDirection: 'row'}}>
+        <Text>{unitTitles[1]} : </Text>
+        <Text style={{color: 'black'}}>{unit.sumesafe}</Text>
+      </View>
+      <View style={{flexDirection: 'row'}}>
+        <Text>{unitTitles[2]} : </Text>
+        <Text style={{color: 'black'}}>{unit.nem.slice(0, 5)}</Text>
+      </View>
+      <View style={{flexDirection: 'row'}}>
+        <Text>{unitTitles[3]} : </Text>
+        <Text style={{color: 'black'}}>{unit.sicaklik.slice(0, 5)}</Text>
+      </View>
     </View>
   );
 };
 
 export const UnitsScreen = () => {
   const navigation = useNavigation();
+  const [unit, setUnit] = useState(null);
+
   const rightIconPress = () => {
     navigation.navigate('gift-stack');
   };
+
+  useEffect(() => {
+    const dbRef = database().ref('unite');
+    dbRef.on('value', snapshot => {
+      const data = snapshot.val();
+      const lastUnit = data[Object.keys(data).pop()];
+      setUnit(lastUnit);
+    });
+
+    return () => dbRef.off('value');
+  }, []);
 
   return (
     <View style={styles.container}>
@@ -70,6 +77,7 @@ export const UnitsScreen = () => {
         rightIcon={'Gift'}
         rightIconPress={rightIconPress}
       />
+
       <ScrollView contentContainerStyle={styles.scroll}>
         <Container
           child={
@@ -77,10 +85,18 @@ export const UnitsScreen = () => {
           }
           style={styles.infoContainer}
         />
-        <UnitContainer itemsText={unitTitles} />
-        {unitInfos.map((item, index) => (
-          <UnitInfo icon="Unit" item={item} key={index} />
-        ))}
+        {unit ? (
+          unitInfos.map((item, index) => {
+            return (
+              <Container
+                key={index}
+                child={<UnitContainer unit={unit} index={index} />}
+              />
+            );
+          })
+        ) : (
+          <ActivityIndicator />
+        )}
       </ScrollView>
     </View>
   );
