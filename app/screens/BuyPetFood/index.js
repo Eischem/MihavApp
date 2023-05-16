@@ -5,14 +5,6 @@ import {appConfig} from '../../utils/appConfig';
 import styles from './styles';
 import {colors} from '../../utils/theme';
 
-const StockContainer = () => {
-  return (
-    <View style={styles.stockContainer}>
-      <Text style={styles.stockText}>STOK DOLULUK ORANI</Text>
-      <Text style={[styles.stockText, styles.valueContainer]}>%50</Text>
-    </View>
-  );
-};
 const openWebsite = url => {
   Linking.openURL(url)
     .then(res => console.log('Website opened successfully'))
@@ -33,13 +25,11 @@ export const BuyPetFoodScreen = () => {
             <Text style={styles.contactText}>{appConfig.howShouldIDonate}</Text>
           }
         />
-        <Text style={styles.warnText}>DİKKAT EDİLMESİ GEREKENLER</Text>
         <Container
           child={
             <Text style={styles.contactText}>{appConfig.contactForDonate}</Text>
           }
         />
-        <StockContainer />
         <Container
           child={
             <Button
