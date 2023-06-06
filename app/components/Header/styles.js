@@ -13,7 +13,6 @@ export default StyleSheet.create({
     borderRightColor: 'transparent',
     borderStyle: 'solid',
     marginVertical: 10,
-    elevation: 3,
     shadowRadius: 3,
     shadowOpacity: 0.2,
     shadowOffset: {
