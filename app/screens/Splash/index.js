@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import {View, Text, Animated} from 'react-native';
+import {View, Text, Animated, Image} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import Paw from '../../../assets/svg/Paw.svg';
 import styles from './styles';
@@ -35,6 +35,10 @@ export const SplashScreen = () => {
       <View style={styles.appTextContainer}>
         <Text style={styles.appText}>{appConfig.appName}</Text>
       </View>
+      <Image
+        style={styles.catImage}
+        source={require('../../../assets/images/Cat.png')}
+      />
       <Animated.View
         style={[
           {
@@ -42,7 +46,7 @@ export const SplashScreen = () => {
           },
           styles.pawContainer,
         ]}>
-        <Paw height="500" width="500" />
+        <Paw height="100" width="100" />
       </Animated.View>
     </View>
   );
