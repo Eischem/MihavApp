@@ -40,4 +40,5 @@ export default StyleSheet.create({
     padding: 10,
     color: colors.white,
   },
+  rows: {flexDirection: 'row', marginVertical: 4, alignItems: 'center'},
 });
