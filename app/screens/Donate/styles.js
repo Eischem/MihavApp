@@ -6,6 +6,7 @@ export default StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     paddingVertical: 15,
+    backgroundColor: colors.powderBlue,
   },
   scroll: {
     alignItems: 'center',
@@ -26,6 +27,7 @@ export default StyleSheet.create({
     fontSize: 14,
     fontWeight: 'bold',
     alignSelf: 'flex-start',
+    color: colors.black,
   },
   bankAccountInfoText: {
     fontSize: 14,

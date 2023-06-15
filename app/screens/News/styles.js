@@ -1,10 +1,11 @@
 import {StyleSheet} from 'react-native';
-import {sizes} from '../../utils/theme';
+import {colors, sizes} from '../../utils/theme';
 
 export default StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
+    backgroundColor: colors.powderBlue,
   },
   content: {
     flexDirection: 'row',

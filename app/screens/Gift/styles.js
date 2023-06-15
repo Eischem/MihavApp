@@ -6,6 +6,7 @@ export default StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     paddingVertical: 15,
+    backgroundColor: colors.powderBlue,
   },
   content: {
     flexDirection: 'row',
@@ -16,7 +17,7 @@ export default StyleSheet.create({
   supportText: {
     fontSize: 16,
     fontWeight: 'bold',
-    color: colors.white,
+    color: colors.darkBlue,
   },
   image: {
     width: sizes.width / 2.6,
@@ -24,13 +25,13 @@ export default StyleSheet.create({
     borderRadius: sizes.radius,
   },
   button: {
-    backgroundColor: colors.orange,
+    backgroundColor: colors.lightBlue,
     height: 50,
     width: 300,
     maxWidth: 300,
   },
   buttonText: {
-    color: colors.white,
+    color: colors.powderBlue,
     fontWeight: 'bold',
     fontSize: 16,
   },

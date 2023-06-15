@@ -6,6 +6,7 @@ export default StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     paddingVertical: 15,
+    backgroundColor: colors.powderBlue,
   },
   scroll: {
     alignItems: 'center',
@@ -14,11 +15,12 @@ export default StyleSheet.create({
   supportText: {
     fontSize: 16,
     fontWeight: 'bold',
+    color: colors.powderBlue,
   },
   infoContainer: {
     width: sizes.width * 0.9,
     marginTop: 30,
-    backgroundColor: colors.pink,
+    backgroundColor: colors.lightBlue,
   },
   unitContainer: {
     backgroundColor: colors.gray,
