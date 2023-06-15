@@ -15,7 +15,7 @@ export default StyleSheet.create({
     height: 50,
   },
   titleText: {
-    color: colors.darkOrange,
+    color: colors.darkBlue,
     fontSize: sizes.large,
     fontWeight: 'bold',
   },
