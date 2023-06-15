@@ -3,7 +3,6 @@
 import React, {useEffect, useState} from 'react';
 import database from '@react-native-firebase/database';
 import {View, Text, ScrollView, ActivityIndicator, Alert} from 'react-native';
-import {useNavigation} from '@react-navigation/native';
 import {TopBar, Container, Header} from '../../components';
 import {appConfig} from '../../utils/appConfig';
 import styles from './styles';
@@ -81,12 +80,7 @@ const UnitContainer = ({unit, index}) => {
 };
 
 export const UnitsScreen = () => {
-  const navigation = useNavigation();
   const [unit, setUnit] = useState(null);
-
-  const rightIconPress = () => {
-    navigation.navigate('gift-stack');
-  };
 
   useEffect(() => {
     // unite1 ve unite2 birimlerini çekmek için sorgu
@@ -126,12 +120,7 @@ export const UnitsScreen = () => {
   return (
     <View style={styles.container}>
       <Header />
-      <TopBar
-        title="ÜNİTELER"
-        leftIcon="Left"
-        rightIcon={'Gift'}
-        rightIconPress={rightIconPress}
-      />
+      <TopBar title="ÜNİTELER" />
 
       <ScrollView contentContainerStyle={styles.scroll}>
         <Container

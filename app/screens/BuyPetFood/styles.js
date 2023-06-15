@@ -6,6 +6,7 @@ export default StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     paddingVertical: 15,
+    backgroundColor: colors.powderBlue,
   },
   scroll: {
     alignItems: 'center',
@@ -28,19 +29,21 @@ export default StyleSheet.create({
     borderRadius: sizes.radius,
   },
   button: {
-    backgroundColor: colors.orange,
+    backgroundColor: colors.lightBlue,
     height: 50,
     width: 300,
     maxWidth: 300,
+    marginVertical: 30,
   },
   buttonText: {
-    color: colors.white,
+    color: colors.powderBlue,
     fontWeight: 'bold',
     fontSize: 16,
   },
   contactText: {
     fontSize: 14,
     fontWeight: 'bold',
+    color: colors.black,
   },
   warnText: {
     fontSize: 18,

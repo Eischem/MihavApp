@@ -24,11 +24,10 @@ export const NewsScreen = () => {
       <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.headers}>
           <Header />
-          <TopBar title="Haberler" leftIcon="Left" />
         </View>
-        <Text style={styles.title}>Haberler</Text>
+        <TopBar title="Haberler" />
         <Menu imageList={imageListForNews} />
-        <Text style={styles.title}>Duyurular</Text>
+        <TopBar title="Duyurular" />
         <Menu imageList={imageListForAnnouncement} />
       </ScrollView>
     </View>

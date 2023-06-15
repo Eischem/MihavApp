@@ -25,7 +25,7 @@ export const SplashScreen = () => {
   useEffect(() => {
     Animated.loop(fadeInOut).start();
     setTimeout(() => {
-      navigation.navigate('home-screen');
+      navigation.navigate('tab-navigator');
       fadeInOut.stop();
     }, 3000);
   }, []);
