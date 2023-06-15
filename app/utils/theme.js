@@ -23,8 +23,13 @@ const colors = {
   gray: '#E5E5E5',
   black: '#000000',
   white: '#FFFFFF',
-
   lightGray: '#f1f1f1',
+
+  // New Colors
+  powderBlue: '#F5F9FF',
+  lightBlue: '#7494C2',
+  darkBlue: '#36465E',
+  buttonBlue: '#7497D9',
 };
 
 export {sizes, colors};

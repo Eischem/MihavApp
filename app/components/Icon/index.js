@@ -1,30 +1,44 @@
 import React from 'react';
 import {
   About,
-  Home,
   Inbox,
   Search,
-  Gift,
   Left,
   Paw,
   ArrowRight,
   ArrowLeft,
   MihavIcon,
   Unit,
+  news,
+  gift,
+  giftsolid,
+  newsolid,
+  homesolid,
+  paper,
+  papersolid,
+  home2,
 } from '../../../assets/svg';
 
 const iconTypes = {
   About,
-  Home,
+
   Inbox,
   Search,
-  Gift,
+
   Left,
   Paw,
   ArrowRight,
   ArrowLeft,
   MihavIcon,
   Unit,
+  news,
+  gift,
+  giftsolid,
+  newsolid,
+  homesolid,
+  paper,
+  papersolid,
+  home2,
 };
 
 export const Icon = ({icon, ...props}) => {
