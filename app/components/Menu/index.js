@@ -44,6 +44,7 @@ export const Menu = ({imageList}) => {
         {imageList.map((image, index) => (
           <View key={index} style={styles.imageContainer}>
             <Image source={image.imageSource} style={styles.image} />
+            <Text style={styles.imageText}>{image.imageSource}</Text>
           </View>
         ))}
       </ScrollView>
