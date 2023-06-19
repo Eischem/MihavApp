@@ -10,7 +10,7 @@ export const appConfig = {
   howShouldIDonate:
     'Ünitelere konulması için mama satın alarak destek olabilirsiniz. \n\nPeki bu işlem nasıl yapılır? Aşağıdaki mama satın al linkine tıklayınız. Yönlendirilen siteden istediğiniz kuru mamayı sipariş veriniz. Sipariş verirken ALICI BİLGİLERİ KISMINA aşağıdaki iletişim adresindeki tüm bilgileri eksiksiz şekilde doldurunuz. Siparişinizi tamamlayınız.',
   contactForDonate:
-    'İLETİŞİM ADRESİ Ardıçlı, Hamdullah Suphi Tanrıöver Cad. No:363 D:6, 42250 Selçuklu/Konya Mail Adres: mihavapp@gmail.com Telefon No: 0544 240 4290',
+    'İLETİŞİM ADRESİ:\nArdıçlı, Hamdullah Suphi Tanrıöver Cad. No:363 D:6, 42250 Selçuklu/Konya \n\nMail Adres: mihavapp@gmail.com \n\nTelefon No: 0544 240 4290',
   donateInfo:
     'Bağış desteği ne için kullanılıyor? Yapılan bağışlar hayvanların mama ihtiyacında ve ihtiyaç olan bölgelere ünite yapımında kullanılmaktadır. Bu sayede hem hayvanlara sürekli mama sağlamış hem de sahipsiz daha fazla hayvana ulaşım sağlanmaktadır.',
   howCanISendDonate:
