@@ -1,5 +1,5 @@
 import {StyleSheet} from 'react-native';
-import {sizes} from '../../utils/theme';
+import {colors, sizes} from '../../utils/theme';
 
 const IMAGE_WIDTH = sizes.width - 10;
 const IMAGE_HEIGHT = 0.75 * IMAGE_WIDTH;
@@ -10,17 +10,17 @@ export default StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     width: IMAGE_WIDTH,
-    height: 240,
+    height: 250,
     marginTop: 10,
   },
   imageContainer: {
     width: IMAGE_WIDTH,
-    height: 230,
+    height: 260,
     overflow: 'hidden',
   },
   image: {
-    flex: 1,
-    height: 230,
+    flex: 0.75,
+    height: 200,
     width: IMAGE_WIDTH,
     resizeMode: 'cover',
   },
@@ -33,5 +33,29 @@ export default StyleSheet.create({
     paddingHorizontal: 20,
     width: '100%',
     transform: [{translateY: -IMAGE_HEIGHT / 2}],
+  },
+  imageText: {
+    flex: 0.2,
+    borderBottomLeftRadius: sizes.radius,
+    borderBottomRightRadius: sizes.radius,
+    padding: 5,
+    fontSize: sizes.medium,
+    backgroundColor: colors.gray,
+    textAlign: 'center',
+    color: colors.darkBlue,
+    textAlignVertical: 'center',
+  },
+  titleText: {
+    textAlignVertical: 'center',
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    borderBottomRightRadius: sizes.radius,
+    color: colors.darkBlue,
+    fontSize: sizes.large,
+    fontWeight: 'bold',
+    backgroundColor: colors.gray,
+    padding: 5,
+    opacity: 0.8,
   },
 });

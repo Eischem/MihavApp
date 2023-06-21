@@ -4,7 +4,7 @@ import {ScrollView, View, Image, TouchableOpacity, Text} from 'react-native';
 import styles from './styles';
 import {Icon} from '../Icon';
 
-export const Menu = ({imageList}) => {
+export const Menu = ({list}) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const scrollViewRef = useRef(null);
 
@@ -24,8 +24,7 @@ export const Menu = ({imageList}) => {
   };
 
   const handleNext = () => {
-    const index =
-      activeIndex < imageList.length - 1 ? activeIndex + 1 : activeIndex;
+    const index = activeIndex < list.length - 1 ? activeIndex + 1 : activeIndex;
     scrollViewRef.current.scrollTo({
       x: index * styles.imageContainer.width,
       animated: true,
@@ -41,9 +40,11 @@ export const Menu = ({imageList}) => {
         onMomentumScrollEnd={handleScroll}
         pagingEnabled
         ref={scrollViewRef}>
-        {imageList.map((image, index) => (
+        {list.map((image, index) => (
           <View key={index} style={styles.imageContainer}>
-            <Image source={image.imageSource} style={styles.image} />
+            <Image source={{uri: image.resim}} style={styles.image} />
+            <Text style={styles.titleText}>{image.baslik}</Text>
+            <Text style={styles.imageText}>{image.icerik}</Text>
           </View>
         ))}
       </ScrollView>

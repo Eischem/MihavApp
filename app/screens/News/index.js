@@ -1,34 +1,51 @@
-import React from 'react';
-import {ScrollView, Text, View} from 'react-native';
+import React, {useEffect, useState} from 'react';
+import {ActivityIndicator, Alert, ScrollView, View} from 'react-native';
+import database from '@react-native-firebase/database';
 import {TopBar, Header, Menu} from '../../components';
 import styles from './styles';
 
-const imageListForAnnouncement = [
-  {id: 6, imageSource: require('../../../assets/images/images6.jpg')},
-  {id: 4, imageSource: require('../../../assets/images/images4.jpg')},
-  {id: 5, imageSource: require('../../../assets/images/images5.jpg')},
-  {id: 7, imageSource: require('../../../assets/images/images7.jpg')},
-  {id: 8, imageSource: require('../../../assets/images/images8.jpg')},
-];
-const imageListForNews = [
-  {id: 8, imageSource: require('../../../assets/images/images8.jpg')},
-  {id: 1, imageSource: require('../../../assets/images/images1.jpg')},
-  {id: 2, imageSource: require('../../../assets/images/images2.jpg')},
-  {id: 3, imageSource: require('../../../assets/images/images3.jpg')},
-  {id: 7, imageSource: require('../../../assets/images/images7.jpg')},
-];
-
 export const NewsScreen = () => {
+  const [news, setNews] = useState([]);
+  const [announcement, setAnnouncement] = useState([]);
+
+  useEffect(() => {
+    const duyuruPromise = database().ref('duyuru').once('value');
+    const haberPromise = database().ref('haber').once('value');
+
+    Promise.all([duyuruPromise, haberPromise])
+      .then(results => {
+        const duyuruSnapshot = results[0];
+        const haberSnapshot = results[1];
+
+        const duyuruData = duyuruSnapshot.val();
+        const duyuruKeys = Object.keys(duyuruData);
+        const duyuruList = duyuruKeys.map(key => duyuruData[key]);
+        setAnnouncement(duyuruList);
+
+        const haberData = haberSnapshot.val();
+        const haberKeys = Object.keys(haberData);
+        const haberList = haberKeys.map(key => haberData[key]);
+        setNews(haberList);
+      })
+      .catch(error => {
+        Alert.alert(
+          'Bir hata oluştu. Lütfen yeniden deneyiniz.',
+          error.message,
+        );
+      });
+  }, []);
+
   return (
     <View style={styles.container}>
       <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.headers}>
           <Header />
         </View>
+
         <TopBar title="Haberler" />
-        <Menu imageList={imageListForNews} />
+        {news ? <Menu list={news} /> : <ActivityIndicator />}
         <TopBar title="Duyurular" />
-        <Menu imageList={imageListForAnnouncement} />
+        {announcement ? <Menu list={announcement} /> : <ActivityIndicator />}
       </ScrollView>
     </View>
   );

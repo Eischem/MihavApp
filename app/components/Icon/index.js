@@ -21,10 +21,8 @@ import {
 
 const iconTypes = {
   About,
-
   Inbox,
   Search,
-
   Left,
   Paw,
   ArrowRight,

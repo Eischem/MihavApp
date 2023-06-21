@@ -1,5 +1,7 @@
 import {StyleSheet} from 'react-native';
 import {colors, sizes} from '../../utils/theme';
+export const bar_width = 200;
+export const bar_height = 15;
 
 export default StyleSheet.create({
   container: {
@@ -43,4 +45,12 @@ export default StyleSheet.create({
     color: colors.white,
   },
   rows: {flexDirection: 'row', marginVertical: 4, alignItems: 'center'},
+  barContainer: {
+    position: 'absolute',
+    right: 0,
+    width: bar_width,
+    backgroundColor: colors.lightGray,
+    height: bar_height,
+    borderRadius: 20,
+  },
 });

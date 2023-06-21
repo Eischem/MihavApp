@@ -1,46 +1,44 @@
-/* eslint-disable react/no-unstable-nested-components */
 /* eslint-disable react-native/no-inline-styles */
 import React, {useEffect, useState} from 'react';
 import database from '@react-native-firebase/database';
 import {View, Text, ScrollView, ActivityIndicator, Alert} from 'react-native';
 import {TopBar, Container, Header} from '../../components';
 import {appConfig} from '../../utils/appConfig';
-import styles from './styles';
+import styles, {bar_height, bar_width} from './styles';
 import {colors, sizes} from '../../utils/theme';
 
 const unitTitles = ['Yem Miktarı', 'Su Miktarı', 'Nem', 'Sıcaklık'];
 
-const LimitBar = ({value = 0, barColor}) => {
-  const width = 200;
-  const height = 15;
-  const per = (value / 100) * width;
-  const len = Math.floor((per / 100) * width) / 2;
-  if (value > 100) {
-    return <Text style={{position: 'absolute', right: 0}}>hatalı değer</Text>;
+const calculatePer = (value, limit) => {
+  const per = (value / limit) * 100;
+  return Math.floor(per);
+};
+
+const LimitBar = ({value = 0, barColor, limit}) => {
+  const per = calculatePer(value, limit);
+  const len = Math.floor((per / 100) * bar_width);
+
+  if (value > limit) {
+    return <Text style={{position: 'absolute', right: 0}}>Hatalı değer</Text>;
   }
+
   return (
-    <View
-      style={{
-        position: 'absolute',
-        right: 0,
-        width: width,
-        backgroundColor: colors.gray,
-        height: height,
-        borderRadius: 20,
-      }}>
+    <View style={styles.barContainer}>
       <View
         style={{
           width: len,
-          height: height,
+          height: bar_height,
           borderRadius: 20,
-          backgroundColor: barColor || colors.blue,
+          backgroundColor: barColor || 'blue',
         }}
       />
     </View>
   );
 };
 const UnitContainer = ({unit, index}) => {
-  if (!unit) return <ActivityIndicator />;
+  if (!unit) {
+    return <ActivityIndicator />;
+  }
 
   return (
     <View style={{width: 350, padding: sizes.base / 2}}>
@@ -55,25 +53,35 @@ const UnitContainer = ({unit, index}) => {
       </Text>
       <View style={styles.rows}>
         <Text>{unitTitles[0]} : </Text>
-        <Text style={{color: 'black'}}>{unit.yemmesafe}</Text>
-        <LimitBar value={unit.yemmesafe} barColor={colors.green} />
+        <Text style={{color: 'black'}}>{`%${calculatePer(
+          unit.yemmesafe,
+          40,
+        )}`}</Text>
+        <LimitBar value={unit.yemmesafe} barColor={colors.green} limit={40} />
       </View>
       <View style={styles.rows}>
         <Text>{unitTitles[1]} : </Text>
-        <Text style={{color: 'black'}}>{unit.sumesafe}</Text>
-        <LimitBar value={unit.sumesafe} barColor={colors.indigo} />
+        <Text style={{color: 'black'}}>{`%${calculatePer(
+          unit.sumesafe,
+          40,
+        )}`}</Text>
+        <LimitBar value={unit.sumesafe} barColor={colors.indigo} limit={40} />
       </View>
       <View style={styles.rows}>
         <Text>{unitTitles[2]} : </Text>
         <Text style={{color: 'black'}}>{unit.nem.toString().slice(0, 5)}</Text>
-        <LimitBar value={unit.nem} barColor={colors.blue} />
+        <LimitBar value={unit.nem} barColor={colors.blue} limit={100} />
       </View>
       <View style={styles.rows}>
         <Text>{unitTitles[3]} : </Text>
         <Text style={{color: 'black'}}>
           {unit.sicaklik.toString().slice(0, 5)}
         </Text>
-        <LimitBar value={unit.sicaklik} barColor={colors.darkOrange} />
+        <LimitBar
+          value={unit.sicaklik}
+          barColor={colors.darkOrange}
+          limit={100}
+        />
       </View>
     </View>
   );
